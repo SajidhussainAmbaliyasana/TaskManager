@@ -69,6 +69,7 @@ export async function POST(request) {
       description,
       stage,
       priority,
+      tags,
     } = await request.json();
 
     // Validation
@@ -84,11 +85,24 @@ export async function POST(request) {
       );
     }
 
+    if (tags && tags.length > 4) {
+      return Response.json(
+        {
+          success: false,
+          message: "Maximum 4 tags allowed",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
     const task = await Task.create({
       title,
       description,
       stage: stage || "Todo",
       priority: priority || "Medium",
+      tags: tags || [],
       userId: user._id,
     });
 
@@ -108,7 +122,7 @@ export async function POST(request) {
     return Response.json(
       {
         success: false,
-        message: "Internal Server Error",
+        message: error.message || "Internal Server Error",
       },
       {
         status: 500,
@@ -116,4 +130,3 @@ export async function POST(request) {
     );
   }
 }
-

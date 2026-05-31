@@ -44,12 +44,28 @@ export async function PATCH(request, { params }) {
       description,
       stage,
       priority,
+      tags,
     } = await request.json();
 
+    // Validate tags
+    if (tags && tags.length > 4) {
+      return Response.json(
+        {
+          success: false,
+          message: "Maximum 4 tags allowed",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    // Update fields
     if (title !== undefined) task.title = title;
     if (description !== undefined) task.description = description;
     if (stage !== undefined) task.stage = stage;
     if (priority !== undefined) task.priority = priority;
+    if (tags !== undefined) task.tags = tags;
 
     await task.save();
 
@@ -72,7 +88,6 @@ export async function PATCH(request, { params }) {
     );
   }
 }
-
 export async function DELETE(request, { params }) {
   try {
     await connectDB();

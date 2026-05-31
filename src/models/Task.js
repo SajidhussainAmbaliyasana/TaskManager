@@ -33,6 +33,20 @@ const taskSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+
+    tags: {
+      type: [{
+        type: String,
+        trim: true,
+      }],
+      default: [],
+      validate: {
+        validator: function (tags) {
+          return tags.length <= 4;
+        },
+        message: "Maximum 4 tags allowed",
+      },
+    }
   },
   {
     timestamps: true,
