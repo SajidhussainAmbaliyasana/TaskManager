@@ -99,12 +99,12 @@ export default function DashboardHeader() {
                             <Typography variant="caption" sx={{ color: '#64748B' }}>{user?.email}</Typography>
                         </Box>
                         <Divider sx={{ borderColor: '#334155' }} />
-                        <MenuItem sx={{ color: '#94A3B8', gap: 1.5, py: 1.25, '&:hover': { color: '#F8FAFC', backgroundColor: 'rgba(99,102,241,0.08)' } }}>
+                        {/* <MenuItem sx={{ color: '#94A3B8', gap: 1.5, py: 1.25, '&:hover': { color: '#F8FAFC', backgroundColor: 'rgba(99,102,241,0.08)' } }}>
                             <PersonOutlineIcon fontSize="small" /> Profile
-                        </MenuItem>
-                        <MenuItem sx={{ color: '#94A3B8', gap: 1.5, py: 1.25, '&:hover': { color: '#F8FAFC', backgroundColor: 'rgba(99,102,241,0.08)' } }}>
+                        </MenuItem> */}
+                        {/* <MenuItem sx={{ color: '#94A3B8', gap: 1.5, py: 1.25, '&:hover': { color: '#F8FAFC', backgroundColor: 'rgba(99,102,241,0.08)' } }}>
                             <SettingsOutlinedIcon fontSize="small" /> Settings
-                        </MenuItem>
+                        </MenuItem> */}
                         <Divider sx={{ borderColor: '#334155' }} />
                         <MenuItem
                             // component={Link} href="/login"
